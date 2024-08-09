@@ -38,14 +38,17 @@ export function app(): express.Express {
 
 function run(): void {
   const port = process.env.PORT || 3200;
+  console.log(`process.env.PORT 1 ${process.env.PORT}`);
   // Start up the Node server
   const server = app();
   // let port = process.env['PORT'] || 4000;
   // const port = parseInt(process.env['PORT'] || '3000', 10);
-  server.listen(port, () => {
-    console.log(`process.env.PORT ${process.env.PORT}`);
-    console.log(`Server is running on port ${port}`);
-  });
+  if (typeof port === "number") {
+    server.listen(port, '0.0.0.0', function () {
+      console.log(`process.env.PORT ${process.env.PORT}`);
+      console.log(`Server is running on port ${port}`);
+    });
+  }
   // server.listen(port, () => {
   //     console.log(`Server is running on port ${port}`);
   // });
