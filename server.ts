@@ -37,13 +37,19 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4000;
-
+  // const port = process.env['PORT'] || 4000;
   // Start up the Node server
   const server = app();
-  server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
+  let port = process.env['PORT'] || 4000;
+
+  if (typeof port === "number") {
+    server.listen(port, "0.0.0.0", () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  }
+  // server.listen(port, () => {
+  //   console.log(`Node Express server listening on http://localhost:${port}`);
+  // });
 }
 
 // Webpack will replace 'require' with '__webpack_require__'
