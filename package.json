@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start:dev": "ng serve",
+    "build:dev": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run test-kpa-new:serve-ssr",
+
     "serve:ssr": "node dist/test-kpa-new/server/main.js",
+    "start": "node dist/test-kpa-new/server/main.js",
     "build:ssr": "ng build && ng run test-kpa-new:server",
+    "build": "ng build && ng run test-kpa-new:server",
     "prerender": "ng run test-kpa-new:prerender"
   },
   "private": true,
