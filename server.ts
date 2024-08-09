@@ -43,12 +43,12 @@ function run(): void {
   const server = app();
   // let port = process.env['PORT'] || 4000;
   // const port = parseInt(process.env['PORT'] || '3000', 10);
-  if (typeof port === "number") {
-    server.listen(port, () => {
+
+  server.listen(port, () => {
       console.log(`process.env.PORT ${process.env.PORT}`);
       console.log(`Server is running on port ${port}`);
-    });
-  }
+  });
+
   // server.listen(port, () => {
   //     console.log(`Server is running on port ${port}`);
   // });
