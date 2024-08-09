@@ -10,7 +10,7 @@ import { AppServerModule } from './src/main.server';
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/browser');
+  const distFolder = join(process.cwd(), 'dist/test-kpa-new/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
@@ -37,12 +37,12 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  // const port = process.env['PORT'] || 4000;
+  const port = process.env['PORT'] || 4000;
   // Start up the Node server
   const server = app();
   // let port = process.env['PORT'] || 4000;
-  const port = parseInt(process.env['PORT'] || '3000', 10);
-  server.listen(port, "0.0.0.0", function () {
+  // const port = parseInt(process.env['PORT'] || '3000', 10);
+  server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
   // server.listen(port, () => {
